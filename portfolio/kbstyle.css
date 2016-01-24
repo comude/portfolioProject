@@ -1,0 +1,59 @@
+/*배달의 민족 한나체*/
+@font-face {
+
+    font-family: 'BMjua';
+    src: url(./font/BMJUA_otf.otf) format('truetype');
+
+}
+
+/*********************************** header ***********************************/
+
+#upper_header{
+    border-bottom:1px solid rgb(234,234,234);
+}
+
+header #upper_header{
+    margin:0 auto;
+    padding:50px;
+    text-align: center;
+    /* about font */
+    font-size : 80px;
+    font-family: 'Asap', sans-serif;
+}
+
+#upper_header a{
+    text-decoration: none;
+}
+
+header #sub_header{
+    font-family: 'BMjua', cursive;
+}
+
+
+
+
+/*********************************** low_body ***********************************/
+
+#low_body{
+    border-top:1px solid rgb(234,234,234);
+    font-family: 'BMjua', cursive;
+}
+
+
+
+
+#left_nav{
+
+    font-size : 20px;
+    padding: 0px;
+}
+
+
+/*----------------------content----------------------*/
+#content{
+    border-left :1px solid rgb(234,234,234);
+    border-right:1px solid rgb(234,234,234);
+
+    /*contents가 쌓이면 따로 height 지정 안해줘도 되지않나? 나중에 다시보자*/
+    height: 500px;
+}
