@@ -38,17 +38,28 @@
     <!--          1. 여기 db에서 project들의 목록을 받아와서 뿌려주는 과정필요-->
 
                     <?php
-                        require("../db_config.php");
 
-                        $sql = "SELECT * FROM thumbnail";
-                        $result = mysqli_query($conn,$sql);
+                    // refactoring할 방법을 찾아보자ㅠㅠㅠㅠㅠㅠ
+                    // 지금은 thumbnail을 이라고 table_name을 직접 코드상으로 주는 방법밖에 떠오르지 않는다....
+
+
+
+
+                        // paging
+                        $table_name = 'thumbnail';
+                        require("paging.php");
+
+
+
+
 
 
 
                         while($row = mysqli_fetch_assoc($result)){
 
-                            // img_path 작업
+                            // img_path 작업 (단 지금은 이미지를 img 디렉토리에서밖에 불러오지 못한다..)
                               $img_path = "../img/"."{$row['img_src']}";
+
                     ?>
                             <!--thumbnail-->
                             <div id="thumb_container">
@@ -98,27 +109,33 @@
 
                      <?php  }?>
 
+                <?php
 
+
+                ?>
 
     <!--          2. '새로운 글쓰기' 버튼-->
 
-                <form action="report_thumb_write.php">
-                    <input type="submit" value="write" >
+
+
+                <div class="paging">
+                    <!--$paging변수 안에 li에 대한 내용이 모두 들어있어서 그냥 찍어내도 list 형태로 찍힌다!-->
+                    <?php echo $paging ?>
+                </div>
+
+
+
+                <form action="report_thumb_write.php" style="display:inline-block;">
+                    <input type="submit" value="write" style="margin-bottom: 100px;">
                 </form>
 
             </div>
 
 
-
-
-
             <!--comment-->
             <div class="col-md-2" id="comment">comment</div>
 
-
-
         </div> <!--end of low_body-->
-
 
     </div> <!--end of class="row"-->
 

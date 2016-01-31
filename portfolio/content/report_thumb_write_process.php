@@ -22,7 +22,7 @@
 
 
 
-
+header('Location:http://localhost:8080/portfolio/content/report_thumb_view.php')
 
 //    $img_path = "{$_SERVER['DOCUMENT_ROOT']}"."/portfolio"."/img"."{$row['imr_src']}";
 ?>

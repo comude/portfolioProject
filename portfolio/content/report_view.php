@@ -73,9 +73,15 @@
                     </div>
 
 
+                <form action="" method="">
+                    <input type="button" value="write">
+                    <input type="button" value="modify">
+                </form>
+
             </div>
 
-            <!--comment-->
+
+<!-------------------------------- comment -------------------------------->
             <div class="col-md-2" id="comment">comment</div>
 
 

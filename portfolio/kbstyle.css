@@ -104,6 +104,24 @@ header #sub_header{
 
 
 
+
+/*---------------------- paging ----------------------*/
+
+.page{
+    /*margin: auto;*/
+    float:left;
+    list-style:none;
+    margin: 10px;
+}
+
+#page_ul {
+    padding-left:0px;
+    height: 50px;
+    width: 160px;
+    margin: auto;
+}
+
+
 /*----------------------content----------------------*/
 
 
