@@ -52,9 +52,6 @@
 
 
 
-
-
-
                         while($row = mysqli_fetch_assoc($result)){
 
                             // img_path 작업 (단 지금은 이미지를 img 디렉토리에서밖에 불러오지 못한다..)
@@ -67,9 +64,16 @@
 
                                     <tr>
                                         <td>
-                                            <a href="./report_view.php">
-                                                <input type="image" id="thumb_img" src="<?php echo $img_path; ?>")>
-                                            </a>
+
+                                            <form action="./report_view.php?proj_name=<?php echo $row['proj_name']; ?>" method="POST">
+<!--                                                <input type="hidden" name="proj_name" value="--><?php //echo $row['proj_name']; ?><!--">-->
+                                                <input type="image" id="thumb_img" src="<?php echo $img_path; ?>">
+                                            </form>
+<!---->
+<!--                                            <a href="./report_view.php?proj_name=--><?php //echo $row['proj_name']; ?><!--">-->
+<!--                                                <input type="image" id="thumb_img" src="--><?php //echo $img_path; ?><!--">-->
+<!--                                            </a>-->
+
                                         </td>
 
                                         <td>
@@ -109,25 +113,19 @@
 
                      <?php  }?>
 
-                <?php
 
 
-                ?>
+                <!--          2. '새로운 글쓰기' 버튼-->
+                <form action="report_thumb_write.php" style="width: 600px;">
+                    <input type="submit" value="write" style="margin-bottom: 100px;">
+                </form>
 
-    <!--          2. '새로운 글쓰기' 버튼-->
 
-
-
+                <!--pagination-->
                 <div class="paging">
                     <!--$paging변수 안에 li에 대한 내용이 모두 들어있어서 그냥 찍어내도 list 형태로 찍힌다!-->
                     <?php echo $paging ?>
                 </div>
-
-
-
-                <form action="report_thumb_write.php" style="display:inline-block;">
-                    <input type="submit" value="write" style="margin-bottom: 100px;">
-                </form>
 
             </div>
 

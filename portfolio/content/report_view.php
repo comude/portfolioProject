@@ -38,47 +38,68 @@
 
                     <div class="row">
 
+                        <?php
+
+                        // refactoring할 방법을 찾아보자ㅠㅠㅠㅠㅠㅠ
+                        // 지금은 thumbnail을 이라고 table_name을 직접 코드상으로 주는 방법밖에 떠오르지 않는다....
 
 
-                        <div style="width:200px; margin-left: 50px; margin-top: 20px; margin-bottom:0px;">
-                            1 / 25
-                        </div>
+                        // paging
+                        $table_name = 'content';
+                        $proj_name = $_GET['proj_name'];
 
 
 
+                        require("paging.php");
 
 
+                        while($row = mysqli_fetch_assoc($result)){ ?>
 
-                        <!--panel-->
-                        <div id="panel">
-                            <div class="panel panel-default">
+                                <div style="width:200px; margin-left: 50px; margin-top: 20px; margin-bottom:0px;">
 
-                                <div class="panel-heading">
-                                    Panel title
                                 </div>
 
-                                <div class="panel-body">
-                                    Panel content<br>
-                                    Panel content<br>
-                                    Panel content
+
+                                <!--panel-->
+                                <div id="panel">
+                                    <div class="panel panel-default">
+
+                                        <div class="panel-heading">
+                                            <?php echo $row['title']; ?>
+                                        </div>
+
+                                        <div class="panel-body">
+                                            <?php echo $row['description']; ?>
+                                        </div>
+
+
+                                    </div>
                                 </div>
 
-                                <div class="panel-footer">
-                                    Panel footer
-                                </div>
-
-                            </div>
-                        </div>
+                        <?php  }?>
 
                     </div>
 
+                <nav style="margin-left: 600px;">
+                    <form action="report_view_write.php" style="float:left;">
+                        <input type="submit" value="write">
+                    </form>
 
-                <form action="" method="">
-                    <input type="button" value="write">
-                    <input type="button" value="modify">
-                </form>
+                    <form action="report_view_modify.php">
+                        <input type="submit" value="modify">
+                    </form>
+                </nav>
+
+
+                <!--pagination-->
+                <div class="paging">
+                    <!--$paging변수 안에 li에 대한 내용이 모두 들어있어서 그냥 찍어내도 list 형태로 찍힌다!-->
+                    <?php echo $paging ?>
+                </div>
+
 
             </div>
+
 
 
 <!-------------------------------- comment -------------------------------->
