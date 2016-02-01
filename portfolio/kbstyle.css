@@ -1,0 +1,162 @@
+/*배달의 민족 한나체*/
+@font-face {
+
+    font-family: 'BMjua';
+    src: url(./font/BMJUA_otf.otf) format('truetype');
+
+}
+
+
+/*********************************** header ***********************************/
+
+#upper_header{
+    border-bottom:1px solid rgb(234,234,234);
+}
+
+header #upper_header{
+    margin:0 auto;
+    padding:20px;
+    text-align: center;
+    /* about font */
+    font-size : 60px;
+    /*font-family: 'Asap', sans-serif;*/
+    font-family: 'BMjua', cursive;
+}
+
+#upper_header a{
+    text-decoration: none;
+}
+
+header #sub_header{
+    font-family: 'BMjua', cursive;
+}
+
+
+
+/*********************************** low_body ***********************************/
+
+#low_body{
+    border-top:1px solid rgb(234,234,234);
+    font-family: 'BMjua', cursive;
+}
+
+
+
+
+#left_nav{
+
+    font-size : 20px;
+    padding: 0px;
+}
+
+
+
+/*---------------------- thumb ----------------------*/
+
+
+#title_container{
+
+    font-size: 30px;
+    text-align: center;
+
+    border: 1px solid red;
+    height: 70px;
+
+    margin-bottom: 20px;
+}
+
+
+#thumb_container{
+
+    font-size: 14px;
+
+    border: 1px solid blue;
+    height: 230px;
+
+    margin-bottom: 20px;
+}
+
+#thumb_img {
+
+    border: 1px solid green;
+
+    float:left;
+
+    margin : 5px;
+    padding : 5px;
+
+    width: 220px;
+    height: 220px;
+}
+
+#thumb_description{
+    border: 1px solid green;
+
+    display:inline-block;
+
+    margin : 5px;
+    padding : 20px;
+
+    width: 460px;
+    height: 220px;
+}
+
+
+
+
+
+/*---------------------- paging ----------------------*/
+
+.page{
+    /*margin: auto;*/
+    float:left;
+    list-style:none;
+    margin: 10px;
+}
+
+#page_ul {
+    padding-left:0px;
+    height: 50px;
+    width: 160px;
+    margin: auto;
+}
+
+
+/*----------------------content----------------------*/
+
+
+#content{
+    border-left :1px solid rgb(234,234,234);
+    border-right:1px solid rgb(234,234,234);
+
+    padding-left : 0px;
+    padding-right : 0px;
+     /*Q) contents가 쌓이면 따로 height 지정 안해줘도 되지않나? 나중에 다시보자*/
+     /*A) 안해주니까 scroll이 안먹힌다 해줘야할듯*/
+
+    height: 750px;
+}
+
+#panel{
+    margin: 20px;
+    margin-bottom : 20px;
+    margin-top : 20px;
+
+    width : 650px;
+    margin-left: 80px;
+}
+
+.text_bar{
+    width: 230px;
+}
+
+
+/*ck editor*/
+#cke_report_editor{
+    width: 700px;
+    margin: auto;
+
+
+
+}
+
