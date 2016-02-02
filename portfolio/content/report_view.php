@@ -47,7 +47,8 @@
                         // paging
                         $table_name = 'content';
                         $proj_name = $_GET['proj_name'];
-
+                            //현재 url 구하기(초기에 한번만 실행하게 해야한다. 아니면 URL이 중첩된다.)
+//                        $curUrl = "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 
 
                         require("paging.php");

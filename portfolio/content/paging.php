@@ -22,12 +22,12 @@
         $row = mysqli_fetch_assoc($result);
 
 
-        if($row['cnt']==0){
+        // 가져올 값이 없을때는,
+        if($row['cnt']==0) {
             $paging = '<ul id="page_ul">'; // 페이징을 저장할 변수
             $paging .= '<li class="page current">' . 1 . '</li>';
             $paging .= '</ul>';
-        }else{
-
+        } else {
 
 
                     $allPost = $row['cnt']; //전체 게시글의 수
@@ -36,13 +36,13 @@
                     $allPage = ceil($allPost / $onePage); //전체 페이지의 수
 
                         if ($page < 1 || $page > $allPage) { ?>
-                <!--            <script>-->
-                <!--                alert("존재하지 않는 페이지입니다.");-->
-                <!--                history.back();-->
-                <!--            </script>-->
+                            <script>
+                                alert("존재하지 않는 페이지입니다.");
+                                history.back();
+                            </script>
 
             <?php
-            //            exit;
+                        exit;
 
                     }
 
@@ -62,15 +62,31 @@
                     $nextPage = (($currentSection + 1) * $oneSection) - ($oneSection - 1); //다음 페이지, 11~20일 때 다음을 누르면 21 페이지로 이동.
 
 
+
+
+
+
+
                     $paging = '<ul id="page_ul">'; // 페이징을 저장할 변수
+
+//                    //현재 url 구하기
+//                    $url = "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
 
                     //첫 페이지가 아니라면 처음 버튼을 생성
                     if ($page != 1) {
-                        $paging .= '<li class="page page_start"><a href="report_thumb_view.php?page=1">처음</a></li>';
+                        if(!empty($_GET['proj_name'])) {
+                            $paging .= '<li class="page page_start"><a href="?'.'proj_name='.$_GET['proj_name'].'&page=1">처음</a></li>';
+                        }else {
+                            $paging .= '<li class="page page_start"><a href="?page=1">처음</a></li>';
+                        }
                     }
                     //첫 섹션이 아니라면 이전 버튼을 생성
                     if ($currentSection != 1) {
-                        $paging .= '<li class="page page_prev"><a href="report_thumb_view.php?page=' . $prevPage . '">이전</a></li>';
+                        if(!empty($_GET['proj_name'])) {
+                            $paging .= '<li class="page page_prev"><a href="?'.$_GET['proj_name'].'page=' . $prevPage . '">이전</a></li>';
+                        }else {
+                            $paging .= '<li class="page page_prev"><a href="?page=' . $prevPage . '">이전</a></li>';
+                        }
                     }
 
 
@@ -79,18 +95,31 @@
                         if ($i == $page) {
                             $paging .= '<li class="page current">' . $i . '</li>';
                         } else {
-                            $paging .= '<li class="page"><a href="report_thumb_view.php?page=' . $i . '">' . $i . '</a></li>';
+                            if(!empty($_GET['proj_name'])){
+                                $paging .= '<li class="page"><a href="?'.'proj_name='.$_GET['proj_name'].'&page=' . $i . '">' . $i . '</a></li>';
+                            }else {
+                                $paging .= '<li class="page"><a href="?page=' . $i . '">' . $i . '</a></li>';
+                            }
                         }
                     }
 
                     //마지막 섹션이 아니라면 다음 버튼을 생성
                     if ($currentSection != $allSection) {
-                        $paging .= '<li class="page page_next"><a href="report_thumb_view.php?page=' . $nextPage . '">다음</a></li>';
+                        if(!empty($_GET['proj_name'])){
+                            $paging .= '<li class="page page_next"><a href="?'.'proj_name='.$_GET['proj_name'].'&page=' . $nextPage . '">다음</a></li>';
+                        }else {
+                            $paging .= '<li class="page page_next"><a href="?page=' . $nextPage . '">다음</a></li>';
+                        }
                     }
 
                     //마지막 페이지가 아니라면 끝 버튼을 생성
                     if ($page != $allPage) {
-                        $paging .= '<li class="page page_end"><a href="report_thumb_view.php?page=' . $allPage . '">끝</a></li>';
+
+                        if(!empty($_GET['proj_name'])) {
+                            $paging .= '<li class="page page_end"><a href="?' . 'proj_name=' . $_GET['proj_name'] . '&page=' . $allPage . '">끝</a></li>';
+                        }else {
+                            $paging .= '<li class="page page_end"><a href="?page=' . $allPage . '">끝</a></li>';
+                        }
                     }
                     $paging .= '</ul>';
 
@@ -103,6 +132,7 @@
                     $sqlLimit = ' limit ' . $currentLimit . ', ' . $onePage; //limit sql 구문
 
 
+
         }// end of else
 
         $sql = "select * from {$table_name}";
@@ -110,12 +140,15 @@
         // content table은 해당 project name의 record만 가져와야 하므로 추가 조건을 준다
         if($table_name=='content'){
             $sql .= " where proj_name='{$_GET['proj_name']}'";
-            $sqlLimit = "";
+//            $sqlLimit = "";
         }
 
         $sql .= $sqlLimit; //원하는 개수만큼 가져온다. (0번째부터 20번째까지
 
-//        echo "밑에꺼 :".var_dump($sql)."<p>";
+
+
+
+
 
 
         $result = mysqli_query($conn, $sql);
